@@ -1,16 +1,159 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+:root {
+    --bg-primary: #001e1e;
+    --bg-secondary: #002e2e;
+    --bg-dark: #101b1d;
+    --bg-light: #266c7e;
+
+    --hv-bg-light: #266f8a;
+
+    --cl-primary: #dae0e5;
+    --cl-secondary: #dee1f5;
+    --cl-gray: gray;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&display=swap');
 
 * {
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    background-color: var(--bg-primary);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    margin-top: 10vh;
+}
+
+@keyframes opacityComponent {
+    from {
+        opacity: 0;   
+    } to {
+        opacity: 1;
+    }
+}
+
+@keyframes  moveComponentsToTop {
+    from {
+        margin-top: 10vh;    
+    } to {
+        margin-top: 0;
+    }
+}
+
+h1 {
+    color: var(--cl-primary);
+    font-family: 'Mitr', sans-serif;
+    animation-name: opacityComponent;
+    animation-duration: 1s;
+}
+
+.description {
+    color: var(--cl-secondary);
+    font-size: 16pt;
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+    font-family: 'Sen', sans-serif;
+    animation-name: opacityComponent;
+    animation-duration: 3s;
+}
+
+.content {
+    display: flex;
+    width: 70%;
+    height: 60vh;
+    justify-content: space-between;
+    animation-name: moveComponentsToTop;
+    animation-duration: 2s;
+}
+
+.left-side_text {
+    background-color: var(--bg-secondary);
+    width: 50%;
+    padding: 2%;
+    border-radius: 20px;
+    animation-name: opacityComponent;
+    animation-duration: 3s;
+}
+
+.left-side_text p {
+    color: var(--cl-gray);
+    font-size: 15pt;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.right-side_text {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    border-radius: 15px;
+    animation-name: opacityComponent;
+    animation-duration: 3s;
+}
+
+.right-side_text form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+.right-side_text form textarea {
+    font-size: 15pt;
+    width: 100%;
+    resize: none;
+    height: 100%;
+    background-color: var(--bg-dark);
+    border: none;
+    padding: 3%;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.right-side_text form textarea:focus {
+    outline: 0;
+}
+
+.right-side_text form button {
+    font-size: 20pt;
+    font-family: 'Nunito Sans', sans-serif;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: var(--bg-light);
+    color: var(--cl-primary);
+}
+
+.right-side_text form button:hover {
+    cursor: pointer;
+    background-color: var(--hv-bg-light);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    padding: 5vh;
+    margin-top: 7%;
+}
+
+footer p {
+    font-size: 15pt;
+    color: white; 
+    font-family: 'Sen', sans-serif;
+}
+
+
