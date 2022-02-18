@@ -1,14 +1,15 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import send from '../public/send.svg';
 import api from './api';
 
 const Home: NextPage = () => {
 
-    const [text, setText] = useState('');
+    const [textToSend, setTextToSend] = useState('');
+    const [textReceived, setTextReceived] = useState('');
 
     const submitText = (e: object) => {
         e.preventDefault();
@@ -17,9 +18,22 @@ const Home: NextPage = () => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             mode: 'cors',
-            body: JSON.stringify({ text: text })
+            body: JSON.stringify({ text: textToSend })
         });
     };
+
+    useEffect(async () => {    
+        const response: object = await fetch(`${api}/en-random`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json'},
+            mode: 'cors',
+        })
+
+        const data: object = await response.json();
+
+        setTextReceived(data.text); 
+
+    }, []);
 
     return (
         <>
@@ -37,7 +51,7 @@ const Home: NextPage = () => {
                 <div className="content">
                     <section className="left-side_text">
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            {textReceived}
                         </p>
                     </section>
 
@@ -47,7 +61,7 @@ const Home: NextPage = () => {
                                 rows="15" 
                                 name="text" 
                                 placeholder="Write here..."
-                                onChange={(e) => setText(e.target.value)}></textarea>
+                                onChange={(e) => setTextToSend(e.target.value)}></textarea>
         
                             <button type="submit">
                                 <img src="./arrow.svg" />
