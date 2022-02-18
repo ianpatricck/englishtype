@@ -10,6 +10,7 @@ const Home: NextPage = () => {
 
     const [textToSend, setTextToSend] = useState('');
     const [textReceived, setTextReceived] = useState('');
+    const [idReceived, setIdReceived] = useState(0);   
 
     const submitText = (e: object) => {
         e.preventDefault();
@@ -18,7 +19,7 @@ const Home: NextPage = () => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             mode: 'cors',
-            body: JSON.stringify({ text: textToSend })
+            body: JSON.stringify({ text: textToSend, id: idReceived })
         });
     };
 
@@ -32,6 +33,7 @@ const Home: NextPage = () => {
         const data: object = await response.json();
 
         setTextReceived(data.text); 
+        setIdReceived(data.id);
 
     }, []);
 
