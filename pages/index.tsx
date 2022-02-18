@@ -14,7 +14,7 @@ const Home: NextPage = () => {
     const submitText = (e: object) => {
         e.preventDefault();
 
-        fetch(`${api}/translate`, {
+        fetch(`${api}/validate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             mode: 'cors',
