@@ -145,6 +145,22 @@ h1 {
     background-color: var(--hv-bg-light);
 }
 
+.ranking {
+    margin-top: 30px;
+}
+
+.ranking p {
+    font-size: 15pt;
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--bg-light); 
+    animation-name: opacityComponent;
+    animation-duration: .5s;
+}
+
+.ranking p span {
+    color: var(--cl-secondary);
+}
+
 footer {
     display: flex;
     justify-content: center;
@@ -158,7 +174,6 @@ footer p {
     color: white; 
     font-family: 'Sen', sans-serif;
 }
-
 
 @media (max-width: 750px) {
     .content {
