@@ -12,6 +12,8 @@ const Home: NextPage = () => {
     const [textReceived, setTextReceived] = useState('');
     const [idReceived, setIdReceived] = useState(0);   
 
+    const [scoreList, setScoreList] = useState({});
+
     const submitText = (e: object) => {
         e.preventDefault();
 
@@ -20,6 +22,10 @@ const Home: NextPage = () => {
             headers: { 'Content-Type': 'application/json'},
             mode: 'cors',
             body: JSON.stringify({ text: textToSend, id: idReceived })
+        }).then(res => {
+            return res.json();
+        }).then(data => {
+            setScoreList(data);
         });
     };
 
@@ -34,7 +40,6 @@ const Home: NextPage = () => {
 
         setTextReceived(data.text); 
         setIdReceived(data.id);
-
     }, []);
 
     return (
@@ -69,6 +74,16 @@ const Home: NextPage = () => {
                                 <img src="./arrow.svg" />
                             </button>
                         </form>
+
+                        {scoreList.assertions === undefined ? null : (
+                            <div className="ranking">
+                                <p>
+                                    Total words <span>{scoreList.totalWords}</span>, 
+                                    Hits <span>{scoreList.assertions}</span>
+                                </p>
+                            </div>
+                        )}
+
                     </section>
                 </div>
             </main>
