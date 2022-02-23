@@ -2,9 +2,6 @@
 
 ## Project made with Next.js that challenges the user to translate a text from Portuguese (PT-BR) to English.
 
-> Project under development
-
-
 ### Testing on localhost
 
 ```
