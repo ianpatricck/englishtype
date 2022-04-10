@@ -69,7 +69,7 @@ const Home: NextPage = () => {
                                 name="text" 
                                 placeholder="Write here..."
                                 onChange={(e) => setTextToSend(e.target.value)}></textarea>
-        
+
                             <button type="submit">
                                 <img src="./arrow.svg" />
                             </button>
@@ -87,7 +87,7 @@ const Home: NextPage = () => {
                     </section>
                 </div>
             </main>
-        
+
             <footer>
                 <p>Created by Ian Patrick &#128039;</p>
             </footer>
