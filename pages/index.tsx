@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 import send from '../public/send.svg';
-import api from './api';
 
 const Home: NextPage = () => {
 
@@ -17,7 +16,7 @@ const Home: NextPage = () => {
     const submitText = (e: object) => {
         e.preventDefault();
 
-        fetch(`${api}/validate`, {
+        fetch(`http://localhost:8000/validate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             mode: 'cors',
@@ -30,7 +29,7 @@ const Home: NextPage = () => {
     };
 
     useEffect(async () => {    
-        const response: object = await fetch(`${api}/en-random`, {
+        const response: object = await fetch(`http://localhost:8000/en-random`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json'},
             mode: 'cors',
